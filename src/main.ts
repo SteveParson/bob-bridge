@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-control-regex
-import { Client } from "https://deno.land/x/irc@v0.13.0/mod.ts";
+import { Client } from "https://deno.land/x/irc@v0.14.1/mod.ts";
 import { createBot, Intents, Message, startBot } from "https://deno.land/x/discordeno@18.0.1/mod.ts";
 import config from "../config.json" assert { type: 'json' };
 
@@ -113,9 +113,9 @@ const discordMsgToIrc = async (msg: Message) => {
         }
         return '@[Role](' + (roles.get(id)?.name || 'UnknownRole') + ')';
     })
-    .replace(/\*(.+?)\*/g, '\x1D$1\x1D')   
-    .replace(/\*\*(.+?)\*\*/g, '\x02$1\x02')
-    .replace(/~~(.+?)~~/g, '\x1E$1\x1E'); 
+        .replace(/\*(.+?)\*/g, '\x1D$1\x1D')
+        .replace(/\*\*(.+?)\*\*/g, '\x02$1\x02')
+        .replace(/~~(.+?)~~/g, '\x1E$1\x1E');
 }
 
 client.on("names_reply", async (msg) => {
